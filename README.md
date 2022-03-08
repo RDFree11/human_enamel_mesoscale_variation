@@ -2,7 +2,7 @@
 
 This repo contains data and scripts to visualize data associated with the following publication:
 
-Robert Free, Karen DeRocher, Ruqing Xu, Stuart R. Stock, and Derk Joester, "Mesoscale Structure and Composition Varies Systematically in Human Tooth Enamel", submitted
+Robert Free, Karen DeRocher, Victoria Cooley, Ruqing Xu, Stuart R. Stock, and Derk Joester, "Mesoscale Structure and Composition Varies Systematically in Human Tooth Enamel", submitted
 
 
 
