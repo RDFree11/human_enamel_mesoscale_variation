@@ -1,5 +1,9 @@
-,121,121,121,121,112,112,112,112,030,030,030,030,022,022,022,022
-pattern_ID,Io,mu,fg,fl,Io,mu,fg,fl,Io,mu,fg,fl,Io,mu,fg,fl
+"Fit parameters produced by simultaneous optimization of 4 psuedo-Voigt peaks over the Hap quadruplet. Io is the total integrated intensity, mu is the mean position (peak center), fg is the Gaussian component of the peak width, fl is the Lorentzian component of the peak width. See methods section ref  6 and Supplemental Text 1.4.",,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+reflection,'121','121','121','121','112','112','112','112','030','030','030','030','022','022','022','022'
+variable,Io,mu,fg,fl,Io,mu,fg,fl,Io,mu,fg,fl,Io,mu,fg,fl
+units,[2theta*a.u.],[2theta],[2theta],[2theta],[2theta*a.u.],[2theta],[2theta],[2theta],[2theta*a.u.],[2theta],[2theta],[2theta],[2theta*a.u.],[2theta],[2theta],[2theta]
+pattern_ID,,,,,,,,,,,,,,,,
 1,1121.628771,14.86288895,0.02097873,0.135117041,905.1274732,15.08310751,0.112892432,0.15,1324.128382,15.36832839,0.02097873,0.149999998,117.3278403,15.85500002,0.15,0.15
 2,981.0792744,14.86384207,0.065248822,0.078162499,1166.640589,15.08358337,0.114495931,0.15,1850.80764,15.36183368,0.048039608,0.15,192.2116077,15.94960896,0.092385259,0.051040536
 3,775.2969123,14.86158801,0.054716531,0.095167185,1027.880891,15.11217681,0.15,0.15,2341.133264,15.36900336,0.036840847,0.135929355,23.08229383,15.93577063,0.020978812,0.020978798

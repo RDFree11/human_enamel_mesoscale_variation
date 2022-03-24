@@ -1,5 +1,8 @@
-pattern_ID,R^2,CLAA,s121,a,c
-,[a.u],[a.u.],\AA,\AA,\AA
+Fit quality and calculated crystallographic parameters for each pattern in the diffraction map of sample 2.,,,,,
+,,,,,
+variable,R^2,CLAA,s121,a,c
+units,[a.u],[a.u.],[\AA],[\AA],[\AA]
+pattern_ID,,,,,
 1,0.960197265,5.11369274,229.6008726,9.450010696,6.865368231
 2,0.984654402,4.550690211,338.5320991,9.453982011,6.848631804
 3,0.988800916,4.441479678,300.439763,9.449598162,6.870391122
