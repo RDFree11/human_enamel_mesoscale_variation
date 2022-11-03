@@ -2,7 +2,7 @@
 
 This repo contains data and scripts to visualize data associated with the following publication:
 
-Robert Free, Karen DeRocher, Victoria Cooley, Ruqing Xu, Stuart R. Stock, and Derk Joester, "Mesoscale Structure and Composition Varies Systematically in Human Tooth Enamel", submitted
+Robert Free, Karen DeRocher, Victoria Cooley, Ruqing Xu, Stuart R. Stock, and Derk Joester, "Mesoscale Structural Gradients in Human Tooth Enamel"
 
 Within each "Sample" folder, 3 subfolders exist:
 - DataProcessing: matlab scripts and calibration files to process raw 2D diffraction patterns associated with each sample map
