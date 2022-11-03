@@ -1,7 +1,7 @@
 % Use this script in conjunction with the .csv data files to generate rough
 % versions of the figures and tables for 
-% "Mesoscale Structure and Composition Varies Systematically in Human Tooth
-% Enamel", by R. Free, K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
+% "Mesoscale Structural Gradients in Human Tooth Enamel", by R. Free, 
+% K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
 % This script also includes the units and axes information for each plot.
 
 % Author: Robert Free
@@ -49,7 +49,7 @@ energyKeV = 17.00000; %energy for scan
 
 %physical constants
 h = 4.135667*10^-18; %keV*s
-c = 2.998792*10^18; %angstrom/s
+c = 2.99792*10^18; %angstrom/s
 lambda = h*c/energyKeV; %angstroms
 
 samp2det  = 109.2134; %sample to detector distance in mm (may change per scan)

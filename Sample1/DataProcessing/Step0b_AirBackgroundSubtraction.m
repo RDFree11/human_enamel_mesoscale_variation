@@ -2,8 +2,8 @@
 % diffraction patterns, scaled by the relative intensity of the patterns.
 
 % These analyses support the publication of:
-% "Mesoscale Structure and Composition Varies Systematically in Human Tooth
-% Enamel", by R. Free, K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
+% "Mesoscale Structural Gradients in Human Tooth Enamel", by R. Free, 
+% K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
 % This script also includes the units and axes information for each plot.
 
 % Author: Robert Free
@@ -56,7 +56,7 @@ num2Fit=4; %reflections in quadruplet
 %experimental parameters
 energyKeV=17.00000; %energy for scan
 h=4.135667*10^-18; %keV*s
-c=2.998792*10^18; %angstrom/s
+c=2.99792*10^18; %angstrom/s
 lambda=h*c/energyKeV; %anstroms
 
 %detector parameters

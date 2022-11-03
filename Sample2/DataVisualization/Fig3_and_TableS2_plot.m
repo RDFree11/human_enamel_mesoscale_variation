@@ -1,7 +1,7 @@
 % Use this script in conjunction with the .csv data files to generate rough
 % versions of the figures and tables for 
-% "Mesoscale Structure and Composition Varies Systematically in Human Tooth
-% Enamel", by R. Free, K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
+% "Mesoscale Structural Gradients in Human Tooth Enamel", by R. Free, 
+% K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
 % This script also includes the units and axes information for each plot.
 
 % Author: Robert Free
@@ -49,7 +49,7 @@ energyKeV = 17.00000; %energy for scan
 
 %physical constants
 h = 4.135667*10^-18; % keV*s
-c = 2.998792*10^18;  % angstrom/s
+c = 2.99792*10^18; %angstrom/s
 lambda = h*c/energyKeV; % angstrom
 
 samp2det = 155.6166; %sample to detector distance in mm (may change per scan)
@@ -99,8 +99,8 @@ FontSize_Tick  = 6*fig_zoom;
 ang       = char(197); 
 cmapstr   = {'bone','winter','winter','winter'};
 panl      = {'A','B','C','D','E','F','G','H','I'};
-clims     = {[0,8],[27,40],[9.442,9.453],[6.85,6.90]};
-dlim_abs  = [[0,8];[27,40];[9.442,9.453];[6.85,6.90]];
+clims     = {[0,8],[27,38],[9.440,9.450],[6.84,6.89]};
+dlim_abs  = [[0,8];[27,38];[9.440,9.450];[6.84,6.89]];
 cbar_str1 ={{'CLAA','[a.u.]'},{'s_{121}','[nm]'},{'a',['[',ang,']']},{'c',['[',ang,']']}};
 cbar_str2 ={{'CLAA*',''},{'s_{121}*','[%]'},{'a*','[%]'},{'c*','[%]'}};
 cbar_fmt  = {'','%2.1f','%1.2f','%1.2f'};

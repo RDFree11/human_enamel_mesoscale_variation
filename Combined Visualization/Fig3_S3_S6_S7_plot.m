@@ -1,7 +1,7 @@
 % Use this script in conjunction with the .csv data files to generate rough
 % versions of the figures and tables for 
-% "Mesoscale Structure and Composition Varies Systematically in Human Tooth
-% Enamel", by R. Free, K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
+% "Mesoscale Structural Gradients in Human Tooth Enamel", by R. Free, 
+% K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
 % This script also includes the units and axes information for each plot.
 
 % Author: Robert Free
@@ -59,7 +59,7 @@ energyKeV = 17.00000; %energy for scans
 
 %physical constants
 h = 4.135667*10^-18; % keV*s
-c = 2.998792*10^18;  % angstrom/s
+c = 2.99792*10^18;  % angstrom/s
 lambda = h*c/energyKeV; % angstrom
 
 Sample(1).samp2det  = 155.3818; % sample to detector distance in mm (may change per scan)
@@ -88,9 +88,9 @@ ang       = char(197);
 cmapstr   = {'bone','bone','bone';'autumn','winter','summer';'autumn','winter','summer';'autumn','winter','summer'};
 % cmapstr   = {'bone','bone','bone';'autumn','autumn','autumn';'autumn','autumn','autumn';'autumn','autumn','autumn'};
 panl      = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S'};
-climsGlobal = {[0,8],[23,55],[9.435,9.460],[6.84,6.92]};
-climsSample = {[0,8],[28,55],[9.447,9.459],[6.84,6.92];[0,8],[23,40],[9.442,9.453],[6.85,6.90];[0,8],[25,33],[9.436,9.446],[6.85,6.90]};
-dlim_abs  = [[0,8];[23,55];[9.435,9.460];[6.84,6.92]];
+climsGlobal = {[0,8],[23,55],[9.433,9.456],[6.84,6.92]};
+climsSample = {[0,8],[28,55],[9.446,9.456],[6.85,6.92];[0,8],[23,40],[9.440,9.450],[6.84,6.89];[0,8],[25,33],[9.433,9.443],[6.84,6.90]};
+dlim_abs  = [[0,8];[23,55];[9.433,9.456];[6.84,6.92]];
 cbar_str1 ={{'CLAA','[a.u.]'},{'s_{121}','[nm]'},{'a',['[',ang,']']},{'c',['[',ang,']']}};
 cbar_str2 ={{'CLAA*',''},{'s_{121}*','[%]'},{'a*','[%]'},{'c*','[%]'}};
 cbar_fmt  = {'','%2.1f','%1.2f','%1.2f'};
@@ -528,50 +528,100 @@ else
     disp('Table not saved!')
 end
 
-
-
-%% Fig S6: Correlation Plot of All primary variables
+%% Fig S6. Correlation Matrices by Sample and Cluster
 close all
-climsSample = {[0,8],[32,58],[9.447,9.460],[6.84,6.925];[0,8],[27,40],[9.442,9.453],[6.85,6.90];[0,8],[23,33],[9.435,9.447],[6.85,6.90]};
-save_corrPlot = true;
-corrFigSaveNames = {'CorrPlotSample1.pdf','CorrPlotSample2.pdf','CorrPlotSample3.pdf'};
-for kk=1:3
-    Fhand = figure;
-    [R,PValue,H] = corrplot(Sample(kk).MpClean,'varNames',{'CLAA','s121','a','c'});
-    title(horzcat('Correlation Matrix: ',Sample(kk).name))
+load('uDiffDataAndGroups.mat');
+climsSample = {[0,8],[30,60],[9.446,9.456],[6.85,6.92];[0,8],[27,40],[9.440,9.450],[6.84,6.90];[0,8],[23,33],[9.433,9.443],[6.84,6.90]};
+for ii=1:3
+    for jj=1:2
+
+        Fhand = figure;
+        Fhand.Position=[10, 10, 750, 750];
+        [R,PValue,H] = corrplot(T3((T3.cluster_ID==jj) & (T3.sample==ii),1:4),TestR="on");
+        title({['Sample: s',num2str(ii,'%i')],['Cluster: ',num2str(jj,'%i')]})
+
+        % force the axes to agree across like columns and rows and set the Y axes
+        % for the histograms
+        Fhand.Children(1).XLim = climsSample{ii,1};
+        Fhand.Children(1).YLim = [0,140];
+        Fhand.Children(2).XLim = climsSample{ii,2};
+        Fhand.Children(2).YLim = [0,100];
+        Fhand.Children(3).XLim = climsSample{ii,3};
+        Fhand.Children(3).YLim = [0,100];
+        Fhand.Children(4).XLim = climsSample{ii,4};
+        Fhand.Children(4).YLim = [0,130];
     
-    Fhand.Children(1).XLim = climsSample{kk,1};
-    Fhand.Children(1).YLim = [0,135];
-    Fhand.Children(2).XLim = climsSample{kk,2};
-    Fhand.Children(2).YLim = [0,150];
-    Fhand.Children(3).XLim = climsSample{kk,3};
-    Fhand.Children(3).YLim = [0,110];
-    Fhand.Children(4).XLim = climsSample{kk,4};
-    Fhand.Children(4).YLim = [0,125];
+        Fhand.Children(5).XLim = climsSample{ii,1};
+        Fhand.Children(5).YLim = climsSample{ii,1};
+        Fhand.Children(6).XLim = climsSample{ii,2};
+        Fhand.Children(6).YLim = climsSample{ii,1};
+        Fhand.Children(7).XLim = climsSample{ii,3};
+        Fhand.Children(7).YLim = climsSample{ii,1};
+        Fhand.Children(8).XLim = climsSample{ii,4};
+        Fhand.Children(8).YLim = climsSample{ii,1};
 
-    Fhand.Children(6).XLim = climsSample{kk,2};
-    Fhand.Children(7).XLim = climsSample{kk,3};
-    Fhand.Children(8).XLim = climsSample{kk,4};
-    Fhand.Children(9).XLim = climsSample{kk,1};
-    Fhand.Children(10).XLim = climsSample{kk,2};
-    Fhand.Children(11).XLim = climsSample{kk,3};
-    Fhand.Children(12).XLim = climsSample{kk,4};
-    Fhand.Children(13).XLim = climsSample{kk,1};
-    Fhand.Children(14).XLim = climsSample{kk,2};
-    Fhand.Children(15).XLim = climsSample{kk,3};
-    Fhand.Children(16).XLim = climsSample{kk,4};
-    Fhand.Children(17).XLim = climsSample{kk,1};
-    Fhand.Children(18).XLim = climsSample{kk,2};
-    Fhand.Children(19).XLim = climsSample{kk,3};
-    Fhand.Children(20).XLim = climsSample{kk,4};
-    Fhand.Children(21).XLim = climsSample{kk,1};    
+        Fhand.Children(9).XLim = climsSample{ii,1};
+        Fhand.Children(9).YLim = climsSample{ii,2};
+        Fhand.Children(10).XLim = climsSample{ii,2};
+        Fhand.Children(10).YLim = climsSample{ii,2};
+        Fhand.Children(11).XLim = climsSample{ii,3};
+        Fhand.Children(11).YLim = climsSample{ii,2};
+        Fhand.Children(12).XLim = climsSample{ii,4};
+        Fhand.Children(12).YLim = climsSample{ii,2};
 
-    if save_corrPlot
-        exportgraphics(gcf,corrFigSaveNames{kk},'BackgroundColor','none','ContentType','vector');
+        Fhand.Children(13).XLim = climsSample{ii,1};
+        Fhand.Children(13).YLim = climsSample{ii,3};
+        Fhand.Children(14).XLim = climsSample{ii,2};
+        Fhand.Children(14).YLim = climsSample{ii,3};
+        Fhand.Children(15).XLim = climsSample{ii,3};
+        Fhand.Children(15).YLim = climsSample{ii,3};
+        Fhand.Children(16).XLim = climsSample{ii,4};
+        Fhand.Children(16).YLim = climsSample{ii,3};
+        
+        Fhand.Children(17).XLim = climsSample{ii,1};
+        Fhand.Children(17).YLim = climsSample{ii,4};
+        Fhand.Children(18).XLim = climsSample{ii,2};
+        Fhand.Children(18).YLim = climsSample{ii,4};
+        Fhand.Children(19).XLim = climsSample{ii,3};
+        Fhand.Children(19).YLim = climsSample{ii,4};
+        Fhand.Children(20).XLim = climsSample{ii,4};
+        Fhand.Children(20).YLim = climsSample{ii,4};
+
+        Fhand.Children(21).XLim = climsSample{ii,1}; 
+
+        % force histograms to match bin widths by variable
+        Fhand.Children(1).Children(1).BinWidth = 0.5; % CLAA bin width
+        Fhand.Children(2).Children(1).BinWidth = 1; % s121 bin width
+        Fhand.Children(3).Children(1).BinWidth = 0.0005; % a lattice parameter bin width
+        Fhand.Children(4).Children(1).BinWidth = 0.003; % c lattice parameter bin width
+
+        % make boxes square to ease readability between upper and lower
+        % sectors
+        Fhand.Children(1).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(2).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(3).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(4).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(5).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(6).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(7).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(8).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(9).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(10).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(11).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(12).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(13).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(14).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(15).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(16).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(17).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(18).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(19).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(20).PlotBoxAspectRatio = [1 1 1];
+        Fhand.Children(21).PlotBoxAspectRatio = [1 1 1];
+
+
     end
-    PValue
 end
-
 %% Fig S7 with error ellipses
 close all
 figure

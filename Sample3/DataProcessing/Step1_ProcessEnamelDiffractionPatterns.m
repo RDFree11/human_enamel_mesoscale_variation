@@ -6,8 +6,8 @@
 % scripts
 
 % These analyses support the publication of:
-% "Mesoscale Structure and Composition Varies Systematically in Human Tooth
-% Enamel", by R. Free, K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
+% "Mesoscale Structural Gradients in Human Tooth Enamel", by R. Free, 
+% K. DeRocher, V. Cooley, R. Xu, S.R. Stock, and D. Joester.
 % This script also includes the units and axes information for each plot.
 
 % Author: Robert Free
@@ -18,7 +18,7 @@ clear all;
 close all;
 clc
 %% Flags
-save_maps = false;
+save_maps = true;
 save_results = true;
 plot_maps = true;
 
@@ -57,7 +57,7 @@ num2Fit=4; %reflections in quadruplet
 %experimental parameters
 energyKeV=17.00000; %energy for scan
 h=4.135667*10^-18; %keV*s
-c=2.998792*10^18; %angstrom/s
+c=2.99792*10^18; %angstrom/s
 lambda=h*c/energyKeV; %anstroms
 
 %detector parameters
@@ -304,7 +304,7 @@ for j=pattRange
     
     disp(j)
 end
-%% Plot parameter maps
+ %% Plot parameter maps
 
 if plot_maps
     fig=figure('Name','a parameter');
@@ -440,16 +440,16 @@ end
 
 ResultsMatrix = cat(2,pattRange',rsquaredList',CLAAlist',Size121List',aLatticeList',cLatticeList');
 
-CLAAavg=mean(CLAAlist);
-Size121avg=mean(Size121List);
-aLatticeavg=mean(aLatticeList);
-cLatticeavg=mean(cLatticeList);
+CLAAavg=mean(CLAAlist(pattSample));
+Size121avg=mean(Size121List(pattSample));
+aLatticeavg=mean(aLatticeList(pattSample));
+cLatticeavg=mean(cLatticeList(pattSample));
 
 
-CLAAstd=std(CLAAlist);
-Size121std=std(Size121List);
-aLatticestd=std(aLatticeList);
-cLatticestd=std(cLatticeList);
+CLAAstd=std(CLAAlist(pattSample));
+Size121std=std(Size121List(pattSample));
+aLatticestd=std(aLatticeList(pattSample));
+cLatticestd=std(cLatticeList(pattSample));
 %% Compute the compositional differences in Mg and CO3 corresponding to measured variations in a and c lattice parameters, assuming a simple linear model
 ao=9.4554; %from Wilson and colleagues 1999
 co=6.8835;
